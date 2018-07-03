@@ -1,0 +1,24 @@
+.results-groups-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    .results-group {
+        color: #fff;
+        flex: 1 0 25%;
+        padding: 0;
+        > .results-group__content_container {
+            padding: 1em;
+            > div {
+                background-color: #1890ff;
+            }
+        }
+        .results-group__standings-list {
+            list-style-position: inside;
+            margin-bottom: 10px;
+            padding: 0;
+            > li {
+                padding: .4em 0;
+            }
+        }
+    }
+}

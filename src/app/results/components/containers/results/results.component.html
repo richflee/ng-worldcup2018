@@ -1,0 +1,15 @@
+<div class="results-groups-container">
+  <div class="results-group" *ngFor="let group of resultsSummaryGroups$ | async">
+    <div class="results-group__content_container">
+      <div>
+        <h3>GROUP {{group['groupLetter']}}</h3>
+        <ol class="results-group__standings-list">
+          <li *ngFor="let teamResultSummary of group.teamResultsSummaries">
+            {{ teamResultSummary.country }} / Pts: {{ teamResultSummary.points }}
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+

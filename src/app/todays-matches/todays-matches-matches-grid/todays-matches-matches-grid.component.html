@@ -1,0 +1,35 @@
+<h3 class="subtitle">
+  Todays matches
+</h3>
+
+<ul class="match-list">
+  <li *ngFor="let match of matches$ | async">
+    <div class="match__score-container">  
+      <div>
+        <h3><span>{{match.homeTeam.goals}}</span> <span>{{match.awayTeam.goals}}</span></h3>
+        <h3><span>{{match.homeTeam.code}}</span> <span>{{match.awayTeam.code}}</span></h3>
+      </div>
+      <p *ngIf="match.status !== 'future'">
+        {{match.time}}
+      </p>
+      <p>
+        <span *ngIf="match.status === 'future'">{{match.datetime | date: 'medium' }}</span>
+        At {{match.location}}
+      </p>
+      <ul>
+        <li *ngFor="let goalEvent of match.goalEvents()">
+            <strong>{{goalEvent['time']}}</strong> {{goalEvent['player']}}
+        </li>
+      </ul>
+      <button *ngIf="match.status !== 'future'"
+        (click)="handleViewDetailsClick(match)">View</button>
+    </div>
+    <div *ngIf="viewDetails" class="match-events">
+        <ul>
+          <li *ngFor="let event of match.homeTeamEvents">
+              <strong>{{event['time']}}</strong> {{event['type_of_event']}} {{event['player']}}
+          </li>
+        </ul>
+    </div>
+  </li>
+</ul>
